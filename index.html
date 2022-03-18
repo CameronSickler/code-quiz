@@ -7,37 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <!-- Link to JS and CSS go here -->
 </head>
 
 <body>
 
-    <header class="border">
-        <h2>HighScore:</h2>
-        <h2>Timer:</h2>
-    </header>
+    <nav>
+        <h1>HighScore:</h1>
+        <a href="highscores.html">See Highscores</a>
 
-    <section class="border">
-        <h1 class="border">Who would win in a fight?</h1>
-        <ol class="border">
-            <li class="border">
-                <a href="#Q1A1">Tiger</a>
-            </li>
+        <div>
+            <strong>Time:</strong> <span id="countdown">0</span>
+            <strong>Score:</strong> <span id="score">0</span>
+        </div>
+    </nav>
 
-            <li class="border">
-                <a href="#Q1A2">Wisconsin</a>
-            </li>
+    <ul id="questions"></ul>
 
-            <li class="border">
-                <a href="Q1A3">Chocolate</a>
-            </li>
-
-            <li class="border">
-                <a href="Q1A4">Jimmy</a>
-            </li>
-        </ol>
-    </section>
-
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
