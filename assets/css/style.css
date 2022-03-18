@@ -29,18 +29,16 @@
 
   #questions {
       display: flex;
+      margin: 10px;
+      padding: 10px;
       flex-direction: column;
       align-items: center;
-  }
-
-  .question {
-      font-style: italic;
   }
 
   #answers {
       display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center;  
   }
 
 .answers {
@@ -51,6 +49,11 @@
      text-decoration: none;
   }
 
-  .answers:hover {
+  .answershover {
       background-color: var(--secondary-color);
+  }
+
+  ul li {
+      list-style: none;
+      text-decoration: none;
   }
