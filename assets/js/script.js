@@ -4,6 +4,7 @@ var score = 0
 var intervalId
 
 var quizDescription = "This is a Quiz. Good Luck."
+var quizBtn = "Click to Begin"
 
 var countdownEl = document.getElementById('countdown')
 var scoreEl = document.getElementById('score')
@@ -32,8 +33,15 @@ function createStartPage() {
 
     var h2 = document.createElement('h2')
     h2.innerText = quizDescription
-    h2.addEventListener('click', handleStartClick)
     questionsEl.appendChild(h2)
+
+    var ul = document.createElement('ul')
+    answersEl.appendChild(ul)
+
+    var li = document.createElement('li')
+    li.innerText = quizBtn
+    li.addEventListener('click', handleStartClick)
+    answerEl.appendChild(li)
 }
 
 function startTimer() {
