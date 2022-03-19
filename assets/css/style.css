@@ -12,19 +12,8 @@
 
   nav {
       display: flex;
-      justify-content: space-between;
-  }
-
-  body {
-      display: flex;
-      height: auto;
-      flex-direction: column;
-  }
-
-  body h1 {
-      display: flex;
       justify-content: center;
-      align-items: center;
+      justify-content: space-between;
   }
 
   #questions {
@@ -36,24 +25,15 @@
   }
 
   #answers {
-      display: flex;
-    flex-direction: column;
-    align-items: center;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-.answers {
-      padding: 10px;
-      border-radius: 10px;
-      background-color: var(--tertiary-color);
-      color: white;
-     text-decoration: none;
-  }
-
-  .answershover {
-      background-color: var(--secondary-color);
-  }
-
-  ul li {
-      list-style: none;
-      text-decoration: none;
+  #answer {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--tertiary-color);
+    color: white;
+    text-decoration: none;
   }

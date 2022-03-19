@@ -40,6 +40,7 @@ function createStartPage() {
 
     var li = document.createElement('li')
     li.innerText = quizBtn
+    li.className = "answer"
     li.addEventListener('click', handleStartClick)
     answerEl.appendChild(li)
 }
