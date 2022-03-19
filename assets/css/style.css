@@ -32,8 +32,9 @@
     align-items: center;
 }
 
-  #answers {
+  #answerslist {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 10px;
@@ -41,16 +42,20 @@
   }
 
   #answer {
+    margin: 10px;
     padding: 10px;
     border-radius: 10px;
     background-color: var(--tertiary-color);
     color: white;
+    list-style: none;
     text-decoration: none;
   }
 
   .answer {
+    margin: 10px;
     padding: 10px;
     border-radius: 10px;
+    list-style: none;
     background-color: var(--tertiary-color);
     color: white;
     text-decoration: none;

@@ -10,11 +10,11 @@ var countdownEl = document.getElementById('countdown')
 var scoreEl = document.getElementById('score')
 
 var questionsEl = document.getElementById('questions')
-var answersEl = document.getElementById('answers')
+var answersListEl = document.getElementById('answerslist')
 var answerEl = document.getElementById('answer')
 
 var clearH2 = document.getElementById("questions");
-var clearUl = document.getElementById("answers");
+var clearUl = document.getElementById("answerslist");
 var clearLi = document.getElementById("answer");
 
 var allQuestions = [Q1, Q2, Q3]
@@ -45,9 +45,15 @@ function clearElements() {
 }
 
 function handleStartClick() {
-    console.log("get clicked")
+    console.log("start clicked")
     //call functions with perameters
     startQuiz(Q1, Q1A)
+}
+
+function handleAnswerClick() {
+    console.log('answer clicked')
+    //if its question 1 and correct answer run q2 function
+    //if its question 1 and wrong answer run end quiz function
 }
 
 function startQuiz(allQuestions, allAnswers) {
@@ -62,18 +68,29 @@ function startQuiz(allQuestions, allAnswers) {
     h2.innerText = allQuestions
     questionsEl.appendChild(h2)
     // }
+
+    // create an ul element to house li elements
+    var ul = document.createElement('ul')
+    answersListEl.appendChild(ul)
+
+    console.log('created Ul success')
+    console.log(ul)
+
     for (i = 0; i < allAnswers.length; i++) {
-        var ul = document.createElement('ul')
-        ul.className = "answer"
-        ul.innerText = allAnswers[i]
-        questionsEl.appendChild(ul)
+        var li = document.createElement('li')
+        li.innerText = allAnswers[i]
+        li.className = "answer"
+        li.addEventListener('click', handleAnswerClick)
+        answersListEl.appendChild(li)
+        console.log(li)
     }
+
 }
 
 
 function startPage() {
     //clear pre-exsting elements
-    // clearElements();
+    clearElements();
 
     console.log("creating start page...")
 
@@ -84,14 +101,14 @@ function startPage() {
 
     // create an ul element to house li elements
     var ul = document.createElement('ul')
-    answersEl.appendChild(ul)
+    answersListEl.appendChild(ul)
 
     // create li element to act as a button
     var li = document.createElement('li')
     li.innerText = quizBtn
     li.className = "answer"
     li.addEventListener('click', handleStartClick)
-    answerEl.appendChild(li)
+    answersListEl.appendChild(li)
 }
 
 function startTimer() {
