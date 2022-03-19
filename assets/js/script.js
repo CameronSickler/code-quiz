@@ -27,23 +27,31 @@ var Q3Answers = ["red", "blue", "green", "pink"]
 
 // functions
 
-function startQuiz() {
+function startQuiz(question, answers) {
+    //replaces questions
     console.log('quiz starts here')
     var aEl = document.getElementById('questions')
     var newEl = document.createElement('questions')
-    newEl.innerText = Q1
+    newEl.innerText = question
     newEl.className = "questions"
     aEl.parentNode.replaceChild(newEl, aEl)
 
+    //insert answers
     var bEl = document.getElementById('answer')
     var newbEl = document.createElement('answer')
     newbEl.innerText = Q1Answers[0]
     bEl.parentNode.replaceChild(newbEl, bEl)
+
+    for (i = 0; i < answers.length; i++) {
+        // clear answers element
+        //create and append new answers element
+    }
 }
 
 function handleStartClick() {
     console.log("get clicked")
-    startQuiz()
+    //call functions with perameters
+    startQuiz(Q1, Q1Answers)
 }
 
 function createStartPage() {
