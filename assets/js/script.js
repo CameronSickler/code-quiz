@@ -1,5 +1,5 @@
 //Quiz timer & Score variables
-var startTime = 30
+var startTime = 3000
 var time = startTime
 var score = 0
 var intervalId
@@ -82,13 +82,14 @@ function clearElements() {
 //This function starts a Timer at the start of a quiz. 
 function startTimer() {
     console.log("starting timer...")
-
+    intervalId = setInterval(endPage, startTime)
 }
 
 //This function handles starting the quiz. 
 function handleStartClick() {
     console.log("start clicked")
     //call startTimer function
+    startTimer()
     quizGenerator()
 }
 
@@ -100,7 +101,13 @@ function handleAnswerClick(event) {
     console.log(event.target)
     console.log('ive been clicked')
 
+    //This function replaces the confirmation correct or wrong
     replaceConfirmation();
+
+    // This starts the timer only once which is the start of the first question.
+    if (currentQuestionIndex < 1) {
+        startTimer();
+    }
 
     // If statement runs if clicked answer matches the corresponding 'answer' value from the allQuestions object.
     if (event.target.innerText === allQuestions[currentQuestionIndex].answer) {
@@ -145,6 +152,7 @@ function endPage() {
     //clear pre-exsting elements
     clearElements();
     replaceConfirmation();
+    clearInterval(intervalId);
 
     console.log("creating end page...")
 
@@ -176,9 +184,8 @@ function quizGenerator() {
     //clear all pre-existing elements
     clearElements();
 
-    // if (currentQuestionIndex <= questionsPerQuiz) {
-    //     replaceConfirmation();
-    // }
+    console.log(startTime)
+    console.log(time)
 
     // create an h2 element to display questions or quiz description
     var h2 = document.createElement('h2')
