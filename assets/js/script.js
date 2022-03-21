@@ -24,6 +24,9 @@ var quizEndBtn = "Play Again"
 var seeHighScoresBtn = "See HighScores"
 
 //Correct! and Wrong! variables
+var correctAnswer = "Correct!"
+var wrongAnswer = "Wrong!"
+
 var countdownEl = document.getElementById('countdown')
 var scoreEl = document.getElementById('score')
 
@@ -32,12 +35,6 @@ var questionsEl = document.getElementById('questions')
 var answersListEl = document.getElementById('answerslist')
 var answerEl = document.getElementById('answer')
 var confirmEl = document.getElementById('confirmation')
-
-//Variables used in the clearElements Function
-var clearH2 = document.getElementById("questions");
-var clearUl = document.getElementById("answerslist");
-var clearLi = document.getElementById("answer");
-var clearConf = document.getElementById("confirmation");
 
 //Object that holds all questions and their answers in an array. 
 var allQuestions = [
@@ -62,17 +59,24 @@ var allQuestions = [
 
 console.log("Welcome to Cameron's quiz generator");
 
+//This function is to replace the confirmation element after each question
+function replaceConfirmation() {
+    console.log('hello')
+    //replace the h3 Element in HTML with null
+    confirmEl.innerHTML = '';
+}
+
 // This function clears any currently displayed elements.
 // This function is used by other functions to clear old content 
 // prior to creating and displaying new content. 
 function clearElements() {
 
     //replace the h2 Element in HTML with null
-    clearH2.innerHTML = '';
+    questionsEl.innerHTML = '';
     //replace the Ul Element in HTML with null
-    clearUl.innerHTML = '';
+    answersListEl.innerHTML = '';
     //replace the li Element in HTML with null
-    clearLi.innerHTML = '';
+    answerEl.innerHTML = '';
 }
 
 //This function starts a Timer at the start of a quiz. 
@@ -84,7 +88,6 @@ function startTimer() {
 //This function handles starting the quiz. 
 function handleStartClick() {
     console.log("start clicked")
-    //call functions with perameters
     //call startTimer function
     quizGenerator()
 }
@@ -97,19 +100,29 @@ function handleAnswerClick(event) {
     console.log(event.target)
     console.log('ive been clicked')
 
-    // need to discuss logic here for how best to proceed
+    replaceConfirmation();
+
+    // If statement runs if clicked answer matches the corresponding 'answer' value from the allQuestions object.
     if (event.target.innerText === allQuestions[currentQuestionIndex].answer) {
         console.log('correct answer of ' + event.target.innerText + ' was picked');
         score = score + 1;
         currentQuestionIndex = currentQuestionIndex + 1;
         console.log(score)
         console.log(currentQuestionIndex)
+        // Create a div on the page that displays 'correct!'
+        var h3 = document.createElement('h3')
+        h3.innerText = correctAnswer
+        confirmEl.appendChild(h3)
     } else {
         console.log('incorrect answer picked of ' + event.target.innerText + ' was picked');
         score = score - 1;
         currentQuestionIndex = currentQuestionIndex + 1;
         console.log(score)
         console.log(currentQuestionIndex)
+        //Create a div on the page that displays 'wrong!'
+        var h3 = document.createElement('h3')
+        h3.innerText = wrongAnswer
+        confirmEl.appendChild(h3)
     }
 
     if (currentQuestionIndex <= questionsPerQuiz) {
@@ -131,6 +144,7 @@ function seeHighScores() {
 function endPage() {
     //clear pre-exsting elements
     clearElements();
+    replaceConfirmation();
 
     console.log("creating end page...")
 
@@ -161,6 +175,10 @@ function endPage() {
 function quizGenerator() {
     //clear all pre-existing elements
     clearElements();
+
+    // if (currentQuestionIndex <= questionsPerQuiz) {
+    //     replaceConfirmation();
+    // }
 
     // create an h2 element to display questions or quiz description
     var h2 = document.createElement('h2')
