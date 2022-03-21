@@ -19,6 +19,10 @@ var questionsPerQuiz = 2;
 var quizDescription = "This is a Quiz. Good Luck."
 var quizBtn = "Click to Begin"
 
+var quizEndDescription = "Good job on your quiz."
+var quizEndBtn = "Play Again"
+var seeHighScoresBtn = "See HighScores"
+
 //Correct! and Wrong! variables
 var countdownEl = document.getElementById('countdown')
 var scoreEl = document.getElementById('score')
@@ -98,10 +102,14 @@ function handleAnswerClick(event) {
         console.log('correct answer of ' + event.target.innerText + ' was picked');
         score = score + 1;
         currentQuestionIndex = currentQuestionIndex + 1;
+        console.log(score)
+        console.log(currentQuestionIndex)
     } else {
         console.log('incorrect answer picked of ' + event.target.innerText + ' was picked');
         score = score - 1;
         currentQuestionIndex = currentQuestionIndex + 1;
+        console.log(score)
+        console.log(currentQuestionIndex)
     }
 
     if (currentQuestionIndex <= questionsPerQuiz) {
@@ -109,8 +117,44 @@ function handleAnswerClick(event) {
         quizGenerator();
     } else {
         console.log('user has finished all quiz questions')
-        return
+        console.log(score)
+        console.log(currentQuestionIndex)
+        endPage();
     }
+}
+
+function seeHighScores() {
+    window.alert('The highscore is ' + score)
+}
+
+// This function holds content to display after quiz is finished
+function endPage() {
+    //clear pre-exsting elements
+    clearElements();
+
+    console.log("creating end page...")
+
+    //create an h2 heading that displays quiz end description
+    var h2 = document.createElement('h2')
+    h2.innerText = quizEndDescription
+    questionsEl.appendChild(h2)
+
+    // create an ul element to house li elements
+    var ul = document.createElement('ul')
+    answersListEl.appendChild(ul)
+
+    // create li element to act as a button
+    var li = document.createElement('li')
+    li.innerText = quizEndBtn
+    li.className = "answer"
+    li.addEventListener('click', startPage)
+    answersListEl.appendChild(li)
+
+    var li = document.createElement('li')
+    li.innerText = seeHighScoresBtn
+    li.className = "answer"
+    li.addEventListener('click', seeHighScores)
+    answersListEl.appendChild(li)
 }
 
 // This function creates elements and populates them with quiz content
@@ -150,6 +194,8 @@ function quizGenerator() {
 
 // This function starts the page the user first sees
 function startPage() {
+    currentQuestionIndex = 0;
+    score = 0;
     //clear pre-exsting elements
     clearElements();
 
