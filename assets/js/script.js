@@ -35,6 +35,7 @@ var questionsEl = document.getElementById('questions')
 var answersListEl = document.getElementById('answerslist')
 var answerEl = document.getElementById('answer')
 var confirmEl = document.getElementById('confirmation')
+var formEl = document.getElementById('form')
 
 //Countdown and score variables
 var countDownEl = document.getElementById('countdown')
@@ -164,16 +165,33 @@ function endPage() {
     clearElements();
     replaceConfirmation();
 
-    time = 0;
+    time = 1;
 
     localStorage.setItem('highscore', score)
-
-    console.log("creating end page...")
 
     //create an h2 heading that displays quiz end description
     var h2 = document.createElement('h2')
     h2.innerText = quizEndDescription
     questionsEl.appendChild(h2)
+
+    // create a form for writing initials and submitting high score
+    // var form = document.createElement("form");
+    // form.setAttribute("method", "post");
+    // form.setAttribute("action", "submit.php");
+
+    // var input = document.createElement("input");
+    // input.setAttribute("type", "text");
+    // input.setAttribute("name", "FullName");
+    // input.setAttribute("placeholder", "Full Name");
+
+    // var submitBtn = document.createElement("input");
+    // submitBtn.setAttribute("type", "submit");
+    // submitBtn.setAttribute("value", "Submit");
+
+    // formEl.appendChild(insert);
+    // formEl.appendChild(submitBtn);
+    // formEl.appendChild(form);
+
 
     // create an ul element to house li elements
     var ul = document.createElement('ul')
