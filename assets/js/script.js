@@ -7,10 +7,13 @@ var intervalId
 //The following variable progresses user through the quiz
 var currentQuestionIndex = 0;
 
-//The following variable sets a loop maximum for generating quiz answer choices.
-//The value should be equal to the number of choices within all the choices arrays
-//inside the allQuestions Object.  
+//The following variable is the number of choices for each question in the quiz
 var choicesPerQuizQuestion = 4;
+
+//The following variable is equal to the number of question in the quiz
+// This number should be equal to the number of question + 1 to account for the 
+// default value of the first question being 0 in the array. 
+var questionsPerQuiz = 2;
 
 //Start page Quiz variables
 var quizDescription = "This is a Quiz. Good Luck."
@@ -89,17 +92,25 @@ function handleStartClick() {
 function handleAnswerClick(event) {
     console.log(event.target)
     console.log('ive been clicked')
+
     // need to discuss logic here for how best to proceed
-    if (event.target.innerText === allQuestions[0].answer) {
+    if (event.target.innerText === allQuestions[currentQuestionIndex].answer) {
         console.log('correct answer of ' + event.target.innerText + ' was picked');
         score = score + 1;
         currentQuestionIndex = currentQuestionIndex + 1;
     } else {
-        console.log('incorrect answer picked of ' + ' was picked');
+        console.log('incorrect answer picked of ' + event.target.innerText + ' was picked');
         score = score - 1;
         currentQuestionIndex = currentQuestionIndex + 1;
     }
-    quizGenerator();
+
+    if (currentQuestionIndex <= questionsPerQuiz) {
+        console.log('user keeps going')
+        quizGenerator();
+    } else {
+        console.log('user has finished all quiz questions')
+        return
+    }
 }
 
 // This function creates elements and populates them with quiz content
