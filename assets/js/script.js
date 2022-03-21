@@ -1,5 +1,5 @@
 //Quiz timer & Score variables
-var startTime = 3000
+var startTime = 30
 var time = startTime
 var score = 0
 var intervalId
@@ -35,6 +35,10 @@ var questionsEl = document.getElementById('questions')
 var answersListEl = document.getElementById('answerslist')
 var answerEl = document.getElementById('answer')
 var confirmEl = document.getElementById('confirmation')
+
+//Countdown and score variables
+var countDownEl = document.getElementById('countdown')
+var scoreEl = document.getElementById('score')
 
 //Object that holds all questions and their answers in an array. 
 var allQuestions = [
@@ -82,7 +86,17 @@ function clearElements() {
 //This function starts a Timer at the start of a quiz. 
 function startTimer() {
     console.log("starting timer...")
-    intervalId = setInterval(endPage, startTime)
+
+    intervalId = setInterval(function () {
+        time = time - 1;
+        countdownEl.innerText = time;
+        if (time <= 0) {
+            alert('quiz over out of time!')
+            clearInterval(intervalId)
+        }
+        console.log(time)
+    }, 1000)
+
 }
 
 //This function handles starting the quiz. 
@@ -103,11 +117,6 @@ function handleAnswerClick(event) {
 
     //This function replaces the confirmation correct or wrong
     replaceConfirmation();
-
-    // This starts the timer only once which is the start of the first question.
-    if (currentQuestionIndex < 1) {
-        startTimer();
-    }
 
     // If statement runs if clicked answer matches the corresponding 'answer' value from the allQuestions object.
     if (event.target.innerText === allQuestions[currentQuestionIndex].answer) {
@@ -132,6 +141,8 @@ function handleAnswerClick(event) {
         confirmEl.appendChild(h3)
     }
 
+    scoreEl.innerText = score;
+
     if (currentQuestionIndex <= questionsPerQuiz) {
         console.log('user keeps going')
         quizGenerator();
@@ -152,7 +163,10 @@ function endPage() {
     //clear pre-exsting elements
     clearElements();
     replaceConfirmation();
-    clearInterval(intervalId);
+
+    time = 0;
+
+    localStorage.setItem('highscore', score)
 
     console.log("creating end page...")
 
@@ -177,15 +191,14 @@ function endPage() {
     li.className = "answer"
     li.addEventListener('click', seeHighScores)
     answersListEl.appendChild(li)
+
+    return
 }
 
 // This function creates elements and populates them with quiz content
 function quizGenerator() {
     //clear all pre-existing elements
     clearElements();
-
-    console.log(startTime)
-    console.log(time)
 
     // create an h2 element to display questions or quiz description
     var h2 = document.createElement('h2')
@@ -219,10 +232,16 @@ function quizGenerator() {
 
 // This function starts the page the user first sees
 function startPage() {
+
+    //reset global variables
+    time = startTime;
     currentQuestionIndex = 0;
     score = 0;
     //clear pre-exsting elements
     clearElements();
+
+    // add countdown and score functionality here to dynamically render on the browswer
+    scoreEl.innerText = score;
 
     console.log("creating start page...")
 
