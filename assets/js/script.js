@@ -36,6 +36,7 @@ var answersListEl = document.getElementById('answerslist')
 var answerEl = document.getElementById('answer')
 var confirmEl = document.getElementById('confirmation')
 var formEl = document.getElementById('form')
+var submitButtonEl = document.getElementById('submitButton')
 
 //Countdown and score variables
 var countDownEl = document.getElementById('countdown')
@@ -60,6 +61,7 @@ var allQuestions = [
     },
 ]
 
+
 // functions
 
 console.log("Welcome to Cameron's quiz generator");
@@ -82,6 +84,8 @@ function clearElements() {
     answersListEl.innerHTML = '';
     //replace the li Element in HTML with null
     answerEl.innerHTML = '';
+    // //replace the form Element in HTML with null
+    // formEl.innerHTML = '';
 }
 
 //This function starts a Timer at the start of a quiz. 
@@ -161,6 +165,18 @@ function seeHighScores() {
     window.alert('The highscore is ' + score)
 }
 
+function submitInitials(event) {
+    event.preventDefault();
+    var initials = document.getElementById('name');
+
+    var currentLeaderObject = {
+        score: score,
+        leader: initials.value,
+    }
+    console.log(currentLeaderObject);
+    // localStorage.setItem('highscore', score)
+}
+
 // This function holds content to display after quiz is finished
 function endPage() {
     //clear pre-exsting elements
@@ -169,31 +185,14 @@ function endPage() {
 
     time = 1;
 
-    localStorage.setItem('highscore', score)
-
     //create an h2 heading that displays quiz end description
     var h2 = document.createElement('h2')
     h2.innerText = quizEndDescription
     questionsEl.appendChild(h2)
 
-    // create a form for writing initials and submitting high score
-    // var form = document.createElement("form");
-    // form.setAttribute("method", "post");
-    // form.setAttribute("action", "submit.php");
-
-    // var input = document.createElement("input");
-    // input.setAttribute("type", "text");
-    // input.setAttribute("name", "FullName");
-    // input.setAttribute("placeholder", "Full Name");
-
-    // var submitBtn = document.createElement("input");
-    // submitBtn.setAttribute("type", "submit");
-    // submitBtn.setAttribute("value", "Submit");
-
-    // formEl.appendChild(insert);
-    // formEl.appendChild(submitBtn);
-    // formEl.appendChild(form);
-
+    //set form to display block
+    formEl.style.display = "block";
+    submitButtonEl.addEventListener("click", submitInitials)
 
     // create an ul element to house li elements
     var ul = document.createElement('ul')

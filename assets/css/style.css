@@ -60,3 +60,7 @@
     color: white;
     text-decoration: none;
   }
+
+  #form {
+    display: none;
+  }
