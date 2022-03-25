@@ -162,19 +162,27 @@ function handleAnswerClick(event) {
 }
 
 function seeHighScores() {
-    window.alert('The highscore is ' + score)
+    console.log(score);
 }
 
 function submitInitials(event) {
     event.preventDefault();
     var initials = document.getElementById('name');
 
-    var currentLeaderObject = {
+    var currentLeader = {
         score: score,
         leader: initials.value,
-    }
-    console.log(currentLeaderObject);
-    // localStorage.setItem('highscore', score)
+    };
+
+    var currentLeaderObj = JSON.stringify(currentLeader);
+
+    localStorage.setItem("currentLeader", currentLeaderObj);
+
+    var currentLeaderStr = localStorage.getItem("currentLeader");
+
+    var currentLeaderParsedObj = JSON.parse(currentLeaderStr);
+
+    console.log(currentLeaderParsedObj);
 }
 
 // This function holds content to display after quiz is finished
