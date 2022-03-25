@@ -133,6 +133,8 @@ function handleAnswerClick(event) {
     } else {
         console.log('incorrect answer picked of ' + event.target.innerText + ' was picked');
         score = score - 1;
+        // time penalty for incorrect answer
+        time = time - 5;
         currentQuestionIndex = currentQuestionIndex + 1;
         console.log(score)
         console.log(currentQuestionIndex)
