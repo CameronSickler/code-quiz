@@ -61,14 +61,12 @@ var allQuestions = [
     },
 ]
 
-
 // functions
 
 console.log("Welcome to Cameron's quiz generator");
 
 //This function is to replace the confirmation element after each question
 function replaceConfirmation() {
-    console.log('hello')
     //replace the h3 Element in HTML with null
     confirmEl.innerHTML = '';
 }
@@ -162,27 +160,30 @@ function handleAnswerClick(event) {
 }
 
 function seeHighScores() {
-    console.log(score);
+    alert(score);
 }
 
-function submitInitials(event) {
+function submitInitialsEventHandler(event) {
     event.preventDefault();
-    var initials = document.getElementById('name');
 
-    var currentLeader = {
-        score: score,
-        leader: initials.value,
-    };
 
-    var currentLeaderObj = JSON.stringify(currentLeader);
+    // console.log(event)
+    // var currentLeader = {
+    //     highScore: score,
+    //     leader: initials,
+    // };
 
-    localStorage.setItem("currentLeader", currentLeaderObj);
+    // var currentLeaderObj = JSON.stringify(currentLeader);
 
-    var currentLeaderStr = localStorage.getItem("currentLeader");
+    // console.log(currentLeader)
 
-    var currentLeaderParsedObj = JSON.parse(currentLeaderStr);
+    // localStorage.setItem("currentLeader", currentLeaderObj);
 
-    console.log(currentLeaderParsedObj);
+    // var currentLeaderStr = localStorage.getItem("currentLeader");
+
+    // var currentLeaderParsedObj = JSON.parse(currentLeaderStr);
+
+    // console.log(currentLeaderParsedObj);
 }
 
 // This function holds content to display after quiz is finished
@@ -200,7 +201,7 @@ function endPage() {
 
     //set form to display block
     formEl.style.display = "block";
-    submitButtonEl.addEventListener("click", submitInitials)
+    submitButtonEl.addEventListener("click", submitInitialsEventHandler)
 
     // create an ul element to house li elements
     var ul = document.createElement('ul')
