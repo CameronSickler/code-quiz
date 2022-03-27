@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body class="highscores">
@@ -14,14 +14,25 @@
         <h1>Code Quiz</h1>
         <a href="index.html">Take Quiz</a>
     </nav>
-    <h3>Current Leader <span id="initials"></span></h3>
-    <h3>High Score: <span id="score"></span></h3>
+    <h3 id="hsp-current-leader-initials">Current Leader <span id="initials"></span></h3>
+    <h3 id="hsp-high-score">High Score: <span id="score"></span></h3>
 
+    <!-- hsp in the id's are short for for 'high score page' -->
+
+    <!-- This script pulls the local storage data and renders it on the highscore page -->
     <script>
-    // get quizleader from localStorage
-    // if leader
-      // set innerText of #initials to leader.initials
-      // set innerText of #score to leader.score
+        var currentLeaderStr = localStorage.getItem("currentLeader");
+
+        var currentLeaderParsedObj = JSON.parse(currentLeaderStr);
+
+        console.log(currentLeaderParsedObj);
+
+        var hspCurrentLeaderInitialsEl = document.getElementById('hsp-current-leader-initials')
+        var hspHighScoreEl = document.getElementById('hsp-high-score')
+
+        hspCurrentLeaderInitialsEl.innerText = "Current Leader: " + currentLeaderParsedObj.leaderInitials;
+        hspHighScoreEl.innerText = "High Score: " + currentLeaderParsedObj.highScore;
+
     </script>
 </body>
 

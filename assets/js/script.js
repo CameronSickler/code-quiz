@@ -16,8 +16,8 @@ var choicesPerQuizQuestion = 4;
 var questionsPerQuiz = 2;
 
 //Start page Quiz variables
-var quizDescription = "This is a Quiz. Good Luck."
-var quizBtn = "Click to Begin"
+var quizDescription = "Coding Quiz Challenge"
+var quizBtn = "Start Quiz"
 
 var quizEndDescription = "Good job on your quiz."
 var quizEndBtn = "Play Again"
@@ -37,6 +37,7 @@ var answerEl = document.getElementById('answer')
 var confirmEl = document.getElementById('confirmation')
 var formEl = document.getElementById('form')
 var submitButtonEl = document.getElementById('submitButton')
+var highScoreEl = document.getElementById('high-score')
 
 
 //Countdown and score variables
@@ -163,7 +164,11 @@ function handleAnswerClick(event) {
 }
 
 function seeHighScores() {
+    // bring user to the high scores page
+
     alert("The current high score is " + score);
+    location.href = 'highscores.html'
+
 }
 
 function submitInitialsEventHandler(event) {
@@ -171,7 +176,7 @@ function submitInitialsEventHandler(event) {
 
     var initialsSumbitted = document.getElementById("name").value
 
-    console.log(initialsSumbitted, event.target);
+    console.log(initialsSumbitted, score);
 
 
     var currentLeader = {
@@ -273,9 +278,6 @@ function startPage() {
     score = 0;
     //clear pre-exsting elements
     clearElements();
-
-    // add countdown and score functionality here to dynamically render on the browswer
-    scoreEl.innerText = score;
 
     console.log("creating start page...")
 
