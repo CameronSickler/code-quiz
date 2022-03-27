@@ -38,6 +38,7 @@ var confirmEl = document.getElementById('confirmation')
 var formEl = document.getElementById('form')
 var submitButtonEl = document.getElementById('submitButton')
 
+
 //Countdown and score variables
 var countDownEl = document.getElementById('countdown')
 var scoreEl = document.getElementById('score')
@@ -60,6 +61,8 @@ var allQuestions = [
         choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
     },
 ]
+
+
 
 // functions
 
@@ -160,24 +163,27 @@ function handleAnswerClick(event) {
 }
 
 function seeHighScores() {
-    alert(score);
+    alert("The current high score is " + score);
 }
 
 function submitInitialsEventHandler(event) {
     event.preventDefault();
 
+    var initialsSumbitted = document.getElementById("name").value
 
-    // console.log(event)
-    // var currentLeader = {
-    //     highScore: score,
-    //     leader: initials,
-    // };
+    console.log(initialsSumbitted, event.target);
 
-    // var currentLeaderObj = JSON.stringify(currentLeader);
 
-    // console.log(currentLeader)
+    var currentLeader = {
+        highScore: score,
+        leaderInitials: initialsSumbitted,
+    };
 
-    // localStorage.setItem("currentLeader", currentLeaderObj);
+    var currentLeaderObj = JSON.stringify(currentLeader);
+
+    console.log(currentLeaderObj)
+
+    localStorage.setItem("currentLeader", currentLeaderObj);
 
     // var currentLeaderStr = localStorage.getItem("currentLeader");
 
