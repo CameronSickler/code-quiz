@@ -20,9 +20,11 @@ WHEN the game is over
 THEN I can save my initials and score
 
 
-Screenshot coming soon
-INSERT HERE
+Screenshots of project:
 
-
+![screenshot 1](https://user-images.githubusercontent.com/98184710/160292391-1374cda8-5267-4285-ac57-ada476619ca8.jpg)
+![screenshot 2](https://user-images.githubusercontent.com/98184710/160292390-2dd57dec-8497-453d-8798-5a693948f229.jpg)
+![screenshot 3](https://user-images.githubusercontent.com/98184710/160292388-330a9b51-fc65-47fc-9dbf-8a80e2692f48.jpg)
+![screenshot 4](https://user-images.githubusercontent.com/98184710/160292392-c41eb5f2-fa53-4dc0-8347-c6594185c311.jpg)
 
 Created by Cameron Sickler
