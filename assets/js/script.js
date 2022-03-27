@@ -45,19 +45,19 @@ var scoreEl = document.getElementById('score')
 //Object that holds all questions and their answers in an array. 
 var allQuestions = [
     {
-        question: "Who would win in a fight?",
-        answer: "chicken",
-        choices: ["lion", "tiger", "bear", "chicken"],
+        question: "Commonly used data types DO Not include:",
+        answer: "alerts",
+        choices: ["strings", "booleans", "alerts", "numbers"],
     },
     {
-        question: "What do you want to eat?",
-        answer: "pizza",
-        choices: ["pizza", "cheese", "donut", "apple"],
+        question: "The condition in an if / else statment is enclosed with ______.",
+        answer: "parenthesis",
+        choices: ["quotes", "curly brackets", "parenthesis", "square brackets"],
     },
     {
-        question: "Which color do you like best?",
-        answer: "red",
-        choices: ["blue", "red", "green", "purple"],
+        question: "Arrays in Javascript can be used to store what?",
+        answer: "all of the above",
+        choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
     },
 ]
 
